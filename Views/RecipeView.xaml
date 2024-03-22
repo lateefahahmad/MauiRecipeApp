@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecipeNotesApp.Views.RecipeView"
+             Title="RecipeView"
+             xmlns:vms="clr-namespace:RecipeNotesApp.ViewModels"
+             x:DataType="vms:RecipeViewModel">
+
+    <VerticalStackLayout Margin="15" Spacing="10">
+        <Label
+            HorizontalTextAlignment="Start"
+            Text="{Binding Recipe.name}"
+            FontAttributes="Bold"
+            FontSize="Title"
+         />
+
+        <Label 
+            Text="{Binding Recipe.cuisine, StringFormat='Cuisine: {0}'}"
+            FontAttributes="Bold"
+            FontSize="20"
+         />
+
+        <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Recipe.thumbnailURL}"></Image>
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+
+
+        <Label
+            Text="{Binding Recipe.prepTime}"
+            VerticalOptions="Center"  
+            HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding Recipe.cookTime}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label
+
+            Text="{Binding Recipe.dietry, StringFormat='Dietry: {0}'}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <Grid BackgroundColor="Red" RowDefinitions="*,*">
+            <VerticalStackLayout>
+                <Label Text="Ingredients"></Label>
+                <CollectionView>
+
+
+                </CollectionView>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="1">
+                <Label Text="Instructions"></Label>
+                <ScrollView>
+                    <CollectionView>
+
+
+                    </CollectionView>
+
+                </ScrollView>
+            </VerticalStackLayout>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

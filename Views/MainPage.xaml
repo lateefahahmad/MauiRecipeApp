@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="RecipeNotesApp.Views.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:RecipeNotesApp.Models"
+             xmlns:vms="clr-namespace:RecipeNotesApp.ViewModels"
+             x:DataType="vms:MainPageViewModel">
+    <Grid ColumnDefinitions="*" RowDefinitions="55,*">
+      <HorizontalStackLayout Margin="5">
+          <SearchBar Placeholder="Search..."></SearchBar>
+          <Button Padding="40,0" Text="Filter"></Button>
+      </HorizontalStackLayout>
+        <ScrollView Grid.Row="1">
+      <CollectionView Margin="20" Grid.Row="1" ItemsSource="{Binding Recipes}"> 
+          <CollectionView.ItemsLayout>
+              <LinearItemsLayout Orientation="Vertical" ItemSpacing="20" />
+          </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="{x:Type models:Recipe}">
+                <Frame Padding="0" Margin="0" Background="Red" HeightRequest="200">
+                    <Grid RowDefinitions="*,60">
+                    <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding thumbnailURL}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="TapGestureRecognizer_Tapped"
+                             NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                        <VerticalStackLayout BackgroundColor="white" Opacity="0.8"  Grid.Row="1" Padding="10, 0">
+                            <Label 
+                                   FontAttributes="Bold"
+                                   TextColor="#ffffff"
+                                   FontSize="24"
+                                   Text="{Binding name}">
+                                <Label.Shadow>
+                                    <Shadow/>
+                                </Label.Shadow>
+                            </Label>
+
+                                <Label
+                                   FontAttributes="Bold"
+                                   TextColor="#ffffff"
+                                   FontSize="18"
+                                   Text="{Binding cuisine}">
+                                <Label.Shadow>
+                                    <Shadow/>
+                                </Label.Shadow>
+                            </Label>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+
+
