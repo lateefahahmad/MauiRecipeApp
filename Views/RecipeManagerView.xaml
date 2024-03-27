@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecipeNotesApp.Views.RecipeManagerView"
+             Title="Recipe Manager">
+    <VerticalStackLayout Padding="10" Spacing="20">
+        <VerticalStackLayout>
+            <Label Text="Recipe Name"/>
+            <!--this is to adhere to mvvm binding to the value in the view model class-->
+            <Entry Text="{Binding nameEntryText}"></Entry>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <!--add drop down menu for this-->
+            <Label Text="Cuisines"/>
+            <Entry></Entry>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Dietry Option"/>
+            <Entry></Entry>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Ingredient to Add"/>
+            <Entry></Entry>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Method"/>
+            <Entry></Entry>
+        </VerticalStackLayout>
+        <Button Text="Upload Photo"></Button>
+        <Button Text="Save Recipe"></Button>
+
+    </VerticalStackLayout>
+</ContentPage>

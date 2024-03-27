@@ -61,10 +61,14 @@
 	  <None Remove="Views\" />
 	  <None Remove="ViewModels\" />
 	  <None Remove="Models\" />
+	  <None Remove="Resources\Images\plus.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Views\" />
 	  <Folder Include="ViewModels\" />
 	  <Folder Include="Models\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Images\plus.png" />
 	</ItemGroup>
 </Project>

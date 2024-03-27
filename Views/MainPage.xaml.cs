@@ -19,4 +19,9 @@ public partial class MainPage : ContentPage
         Recipe recipe = (Recipe)e.Parameter;
         await _viewModel.OpenRecipeDetailView(recipe);
     }
+
+    async void addRecipeButton_Clicked(System.Object sender, System.EventArgs e)
+    {
+        await _viewModel.OpenRecipeManagerView();
+    }
 }

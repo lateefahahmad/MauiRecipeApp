@@ -2,61 +2,81 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RecipeNotesApp.Views.RecipeView"
-             Title="RecipeView"
+             Title="Recipe"
              xmlns:vms="clr-namespace:RecipeNotesApp.ViewModels"
              x:DataType="vms:RecipeViewModel">
-
+    <ScrollView>
     <VerticalStackLayout Margin="15" Spacing="10">
         <Label
             HorizontalTextAlignment="Start"
-            Text="{Binding Recipe.name}"
+            Text="{Binding Recipe.Name}"
             FontAttributes="Bold"
             FontSize="Title"
          />
 
         <Label 
-            Text="{Binding Recipe.cuisine, StringFormat='Cuisine: {0}'}"
+            Text="{Binding Recipe.Cuisine, StringFormat='Cuisine: {0}'}"
             FontAttributes="Bold"
             FontSize="20"
          />
 
-        <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Recipe.thumbnailURL}"></Image>
+        <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Recipe.ThumbnailURL}"></Image>
         <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
 
+        <Frame Padding="10" BorderColor="SeaGreen">
+            <Label
+                Text="{Binding Recipe.PrepTime}"
+                VerticalOptions="Center"  
+                HorizontalOptions="Center" />
+        </Frame>
 
-        <Label
-            Text="{Binding Recipe.prepTime}"
-            VerticalOptions="Center"  
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding Recipe.cookTime}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label
+        <Frame Padding="10" BorderColor="SeaGreen">
+            <Label 
+                Text="{Binding Recipe.CookTime}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </Frame>
 
-            Text="{Binding Recipe.dietry, StringFormat='Dietry: {0}'}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Frame Padding="10" BorderColor="SeaGreen">
+            <Label
+                Text="{Binding Recipe.Dietry, StringFormat='Dietry: {0}'}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </Frame>
         </HorizontalStackLayout>
 
-        <Grid BackgroundColor="Red" RowDefinitions="*,*">
-            <VerticalStackLayout>
-                <Label Text="Ingredients"></Label>
-                <CollectionView>
-
-
+        <Frame BackgroundColor="LightSteelBlue">
+        <VerticalStackLayout Padding="15" Spacing="20">
+            <VerticalStackLayout Spacing="15">
+                <Label HorizontalTextAlignment="Center" Text="Ingredients" FontSize="Medium" FontAttributes="Bold"></Label>
+                <CollectionView ItemsSource="{Binding Recipe.Ingredients}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding .}" HorizontalTextAlignment="Center"></Label>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
-            <VerticalStackLayout Grid.Row="1">
-                <Label Text="Instructions"></Label>
-                <ScrollView>
-                    <CollectionView>
+            <BoxView HeightRequest="1.5"/>
+            <VerticalStackLayout Spacing="15" Grid.Row="1">
 
+                <Label HorizontalTextAlignment="Center" Text="Instructions" FontSize="Medium" FontAttributes="Bold"></Label>
+                
+                    <CollectionView ItemsSource="{Binding Recipe.Method}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="15" Orientation="Vertical"/>
 
+                                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding .}" HorizontalTextAlignment="Start"></Label>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
                     </CollectionView>
-
-                </ScrollView>
             </VerticalStackLayout>
-        </Grid>
+        </VerticalStackLayout>
+        </Frame>
     </VerticalStackLayout>
+        </ScrollView>
 </ContentPage>
+

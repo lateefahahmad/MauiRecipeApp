@@ -5,6 +5,10 @@
              xmlns:models="clr-namespace:RecipeNotesApp.Models"
              xmlns:vms="clr-namespace:RecipeNotesApp.ViewModels"
              x:DataType="vms:MainPageViewModel">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="addRecipeButton" Clicked="addRecipeButton_Clicked" IconImageSource="plus.png"/>
+
+    </ContentPage.ToolbarItems>
     <Grid ColumnDefinitions="*" RowDefinitions="55,*">
       <HorizontalStackLayout Margin="5">
           <SearchBar Placeholder="Search..."></SearchBar>
@@ -19,7 +23,7 @@
             <DataTemplate x:DataType="{x:Type models:Recipe}">
                 <Frame Padding="0" Margin="0" Background="Red" HeightRequest="200">
                     <Grid RowDefinitions="*,60">
-                    <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding thumbnailURL}">
+                    <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding ThumbnailURL}">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="TapGestureRecognizer_Tapped"
                              NumberOfTapsRequired="1" />
@@ -30,7 +34,7 @@
                                    FontAttributes="Bold"
                                    TextColor="#ffffff"
                                    FontSize="24"
-                                   Text="{Binding name}">
+                                   Text="{Binding Name}">
                                 <Label.Shadow>
                                     <Shadow/>
                                 </Label.Shadow>
@@ -40,7 +44,7 @@
                                    FontAttributes="Bold"
                                    TextColor="#ffffff"
                                    FontSize="18"
-                                   Text="{Binding cuisine}">
+                                   Text="{Binding Cuisine}">
                                 <Label.Shadow>
                                     <Shadow/>
                                 </Label.Shadow>
